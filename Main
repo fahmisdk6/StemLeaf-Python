@@ -1,0 +1,31 @@
+def whichStem(number):
+    stemSeparator = 5
+    stem = 0
+    while number > stemSeparator:
+        stemSeparator+=5
+        stem+=1
+    return stem
+
+def leaf(listData, stem):
+    leafData = []
+    for row in listData:
+        if row >= (stem) * 5 and row < (stem + 1) * 5:
+            leafData.append(row)
+
+    return leafData
+
+data = "17 20 10 9 23 13 12 19 18 24 12 14 6 9 13 6 7 10 13 7 16 18 8 13 3 32 9 7 10 11 13 7 18 7 10 4 27 19 16 8 7 10 5 14 15 10 9 6 7 15"
+listData = data.split(" ");
+listData = list(map(int, listData))
+max = max(listData)
+min = min(listData)
+
+for stem in range(whichStem(min), whichStem(max) + 1):
+    leafData = leaf(listData, stem)
+    print("Stem : ", stem, " Leaf : ", leaf(listData, stem),"Frequency :",  len(leafData))
+
+
+
+
+
+
